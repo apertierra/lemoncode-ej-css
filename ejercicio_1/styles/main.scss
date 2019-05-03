@@ -1,0 +1,118 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+/* 
+    Definición de variables
+*/
+
+$baseColor: rgb(187, 72, 51); 
+$secondaryColor: rgb(65, 193, 150);
+
+$bg_color_vars: 
+    (d1  dark  10%)
+    (d2  dark  20%)
+    (d3  dark  30%)
+    (d4  dark  40%)
+    (l1  light  10%)
+    (l2  light  20%)
+    (l3  light  30%)
+    (l4  light  40%);
+
+/* 
+    Mixins
+*/
+
+/* Mixin para oscurecer o aclarar un color */
+@mixin bg-family-color($color, $type, $value ) {
+    @if $type == 'dark' {
+        background: darken($color, $value);
+    }
+    @if $type == 'light' {
+        background: lighten($color, $value);
+    }
+}
+
+
+/* 
+    Reseteo de estilos
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat;
+    font-size: 1.2em;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.paleta {
+    width: 100%;
+    margin: 50px auto;
+    display: flex;
+    align-content: flex-start;
+    justify-items: stretch;
+    flex-flow: row wrap;
+    > div {
+        width: 120px;
+        height: 120px;
+        margin: 1px;
+        line-height: 100px;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+    }
+}
+
+/* 
+    Definición de clases para colores de fondo
+*/
+
+.base-color {
+
+    background-color: $baseColor;
+
+    @each $bg_color in $bg_color_vars {
+
+        $bg_color-name  : nth($bg_color, 1);
+        $bg_color-style : nth($bg_color, 2);
+        $bg_color-value : nth($bg_color, 3);
+        
+        &.#{$bg_color-name} {
+            
+            @include bg-family-color($baseColor, $bg_color-style , $bg_color-value);
+            
+        }
+        
+    }
+
+}
+
+.secondary-color {
+
+    background-color: $secondaryColor;
+
+    @each $bg_color in $bg_color_vars {
+
+        $bg_color-name  : nth($bg_color, 1);
+        $bg_color-style : nth($bg_color, 2);
+        $bg_color-value : nth($bg_color, 3);
+        
+        &.#{$bg_color-name} {
+            
+            @include bg-family-color($secondaryColor, $bg_color-style , $bg_color-value);
+            
+        }
+        
+    }
+  
+}

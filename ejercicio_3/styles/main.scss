@@ -1,0 +1,77 @@
+/* 
+    Reseteo de estilos
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/* 
+--------------------------------------
+*/
+
+body {
+    font: normal 90% arial;
+    color: #666;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1600px;
+    height: 100vh;
+    margin: 0 auto;
+    @media screen and (max-width: 335px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+#main-header {
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em;
+    background: #3f4c6b;
+    color: #fff;
+    .main-header-title {
+        @media screen and (max-width: 335px) {
+            display: none;
+        }
+    }
+}
+
+.main-nav-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #3f4c6b;
+    li {
+        flex-grow: 1;
+        padding: 1px;
+    }
+    li + li {
+        border-left: 1px solid #3f4c6b;
+    }
+    a {
+        display: block;
+        padding: 10px 2%;
+        color: #fff;
+        background: #3f4c6b;
+        text-align: center;
+        font: normal 10px 'Courier New';
+        @media screen and (max-width: 335px) {
+            font-size: 9px;
+        }
+        &:hover {
+            background: lighten(#3f4c6b, 10%);
+        }
+    }
+}
